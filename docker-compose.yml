@@ -4,10 +4,11 @@ services:
         image: asim
         build:
             context: .
+        entrypoint: ./execute.sh
         volumes:
         - "anode_v:/app/node_modules"
         ports:
-        - "8095:3000"
+        - "3000"
         networks:
         - elibrary-net
         deploy:
