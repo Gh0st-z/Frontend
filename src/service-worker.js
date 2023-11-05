@@ -70,3 +70,12 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+self.addEventListener('push', function (event) {
+  const options = {
+    body: event.data.text(),
+  };
+
+  event.waitUntil(
+    self.registration.showNotification('Timer Ended', options)
+  );
+});

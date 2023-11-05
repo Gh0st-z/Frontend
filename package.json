@@ -11,6 +11,7 @@
     "react-scripts": "5.0.1",
     "serve": "^14.2.1",
     "server": "^1.0.38",
+    "web-push": "^3.6.6",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.6.0",
     "workbox-broadcast-update": "^6.6.0",
