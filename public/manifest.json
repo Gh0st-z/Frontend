@@ -23,5 +23,8 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/"
 } 
