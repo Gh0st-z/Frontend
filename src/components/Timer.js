@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const Timer = () => {
-  const [seconds, setSeconds] = useState(60);
+  const initialSeconds = 60; // Initial timer duration
+  const [seconds, setSeconds] = useState(initialSeconds);
   const [timerId, setTimerId] = useState(null);
 
   useEffect(() => {
@@ -31,6 +32,11 @@ const Timer = () => {
     }
   };
 
+  const resetTimer = () => {
+    clearTimeout(timerId);
+    setSeconds(initialSeconds);
+  };
+
   const sendPushNotification = () => {
     if ('serviceWorker' in navigator && 'PushManager' in window) {
       navigator.serviceWorker.ready.then(registration => {
@@ -45,6 +51,7 @@ const Timer = () => {
     <div>
       <p>Timer: {seconds} seconds</p>
       <button onClick={startTimer}>Start Timer</button>
+      <button onClick={resetTimer}>Reset Timer</button>
     </div>
   );
 };
