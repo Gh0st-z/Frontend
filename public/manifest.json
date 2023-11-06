@@ -1,12 +1,14 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "startUrl": ".",
+  "name": "Timer PWA",
+  "short_name": "Timer",
+  "start_url": "/",
   "display": "standalone",
+  "description": "A timer Progressive Web App",
   "host": "http://asim.metacept.com.np/",
   "iconUrl": "https://www.flaticon.com/free-icon/library_10832132?term=reactjs&page=1&position=2&origin=search&related_id=10832132",
   "theme_color": "#000000",
   "background_color": "#ffffff",
+  "enableNotifications": "true",
   "icons": [
     {
       "src": "faviicocon.",

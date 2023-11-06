@@ -7,7 +7,7 @@ const Timer = () => {
 
   useEffect(() => {
     if (seconds === 0) {
-      clearTimeout(timerId);
+      clearInterval(timerId);
       sendPushNotification();
     }
   }, [seconds, timerId]);
@@ -19,21 +19,11 @@ const Timer = () => {
       }, 1000);
 
       setTimerId(id);
-
-      // Request notification permission
-      if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
-        Notification.requestPermission()
-          .then(permission => {
-            if (permission === 'granted') {
-              console.log('Notification permission granted');
-            }
-          });
-      }
     }
   };
 
   const resetTimer = () => {
-    clearTimeout(timerId);
+    clearInterval(timerId);
     setSeconds(initialSeconds);
   };
 
