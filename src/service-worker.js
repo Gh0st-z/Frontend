@@ -70,14 +70,3 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
-// public/service-worker.js
-
-self.addEventListener('push', event => {
-  const options = {
-    body: event.data.text(),
-  };
-
-  event.waitUntil(
-    self.registration.showNotification('Push Notification', options)
-  );
-});
