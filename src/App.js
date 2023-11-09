@@ -3,7 +3,7 @@ import './App.css';
 import {useState} from 'react';
 import { token } from './firebase';
 import { onMessageListener } from './firebase';
-import Button from './components/Button';
+import Button from './components/Timer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
