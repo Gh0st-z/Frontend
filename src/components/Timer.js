@@ -1,84 +1,63 @@
-import { token } from '../firebase';
+// src/components/Timer.js
+
 import React, { useState, useEffect } from 'react';
-import { auth, messaging, functions } from '../firebase';
+import { auth } from '../firebase'; 
 import * as jwt_decode from 'jwt-decode';
 
 const TimerApp = () => {
   const [timer, setTimer] = useState(60);
 
   useEffect(() => {
-    // Check if the browser supports notifications
-    if ('Notification' in window) {
-      // Check if notification permission is denied or default
-      if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
-        // Request notification permission
-        Notification.requestPermission().then((permission) => {
-          if (permission === 'granted') {
-            console.log('Notification permission granted!');
-          } else {
-            console.warn('Notification permission denied.');
-          }
-        });
-      }
-    }
+    const countdownInterval = setInterval(() => {
+      setTimer(prevTimer => prevTimer - 1);
+    }, 1000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(countdownInterval);
   }, []);
 
-  const startTimer = () => {
-    if (isNaN(timer) || timer <= 0) {
-      alert('Please enter a valid positive number for the timer.');
-      return;
-    }
+  const sendPushNotification = async () => {
+    try {
+      const user = auth.currentUser;
 
-    let countdown = timer;
+      if (user) {
+        const idToken = await user.getIdToken();
+        const decodedToken = jwt_decode(idToken);
+        const userId = decodedToken.user_id;
 
-    // Start the countdown
-    const intervalId = setInterval(() => {
-      countdown--;
-      setTimer(countdown);
+        // Replace 'YOUR_SERVER_KEY' with your FCM server key
+        const serverKey = 'BOwLKJz6IgSNrAVfsYixdkhxNrXi26nfCOObgwD7xVz4BaJ1caU7OQU7TZW4KnxhDVNE1tQ6xyIrvJ30StTO8Uc';
 
-      if (countdown === 0) {
-        // Timer reached 0, stop the countdown and trigger push notification
-        clearInterval(intervalId);
-        sendPushNotification();
-      }
-    }, 1000);
-  };
+        const notification = {
+          title: 'Timer Notification',
+          body: 'Your timer has reached 0!',
+        };
 
-  const sendPushNotification = () => {
-    // Assuming you have a function to retrieve the JWT token from the user's session
-    const get_token = token();
+        const payload = {
+          notification,
+          to: userId,
+        };
 
-    if (get_token) {
-      const decodedToken = jwt_decode(get_token);
-      const userId = decodedToken.userId;
-
-      // Assuming you have a Cloud Function deployed to handle push notifications
-      const sendNotificationFunction = functions().httpsCallable('sendPushNotification');
-
-      // Call the Cloud Function to send the push notification
-      sendNotificationFunction({ userId })
-        .then((result) => {
-          console.log('Push notification sent:', result.data);
-        })
-        .catch((error) => {
-          console.error('Error sending push notification:', error);
+        await fetch('https://fcm.googleapis.com/fcm/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `key=${serverKey}`,
+          },
+          body: JSON.stringify(payload),
         });
+
+        console.log('Push notification sent successfully!');
+      }
+    } catch (error) {
+      console.error('Error sending push notification:', error);
     }
   };
 
   return (
     <div>
-      <h1>Set Timer</h1>
-      <label htmlFor="timer">Set timer (in seconds):</label>
-      <input
-        type="number"
-        id="timer"
-        min="1"
-        value={timer}
-        onChange={(e) => setTimer(parseInt(e.target.value, 10))}
-      />
-      <button onClick={startTimer}>Start Timer</button>
-      <div>Time remaining: {timer} seconds</div>
+      <p>Timer: {timer} seconds</p>
+      <button onClick={sendPushNotification}>Send Push Notification</button>
     </div>
   );
 };
