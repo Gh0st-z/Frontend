@@ -42,5 +42,42 @@ export const onMessageListener = () =>
     });
 });
 
+const getOrRegisterServiceWorker = () => {
+  if ('serviceWorker' in navigator) {
+    return window.navigator.serviceWorker
+      .getRegistration('/firebase-cloud-messaging-push-scope')
+      .then((serviceWorker) => {
+        if (serviceWorker) return serviceWorker;
+        return window.navigator.serviceWorker.register('/firebase-messaging-sw.js', {
+          scope: '/firebase-cloud-messaging-push-scope',
+        });
+      });
+  }
+};
+
+const getFBToken = (setTokenFound) => {
+  try {
+    getOrRegisterServiceWorker()
+      .then((serviceWorker) => {
+        if (serviceWorker) {
+          return getToken(messaging, {
+             vapidKey: process.env.REACT_APP_FB_VAPID_KEY, 
+             serviceWorker
+          }).then((currentToken) => {
+            if (currentToken) {
+              setTokenFound(true);
+            } else {
+              setTokenFound(false);
+            }
+          }).catch((err) => {
+            console.error(err);
+          });
+        }
+      });
+} catch (err) {
+  console.error(err);
+}
+};
+
 
 export { auth, messaging, functions };

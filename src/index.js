@@ -11,4 +11,10 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+if (navigator.serviceWorker) {
+  // Register the SW
+  navigator.serviceWorker.register('/firebase-messaging-sw.js').then(function(registration){
+  }).catch(console.log);
+}
+
 serviceWorkerRegistration.register();
