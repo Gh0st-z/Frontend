@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
@@ -35,7 +35,9 @@ function LoginForm() {
             <button class="login-btn">Login</button>
           </div>
           <span id="account">Don't have an account?</span><br/>
-          <Link to="/register"> Create an account</Link>
+          <nav>
+            <Link to="/register"> Create an account</Link>
+          </nav>
         </form>
       </div>
     </div>

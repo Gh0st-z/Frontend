@@ -9,8 +9,6 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 ReactDOM.render(
   <React.StrictMode>
     <App/>
-    <LoginForm/>
-    <Registerform/>
   </React.StrictMode>,
   document.getElementById('root')
 );
