@@ -16,15 +16,15 @@ function LoginForm() {
       <div class = "container">
       <div class = "login-form">
         <form action="" method="POST" enctype="multipart/form-data">
-          <h1 style={{margin: 25 + 'px'}}>Welcome Back!</h1>
+          <h1 id = "wb">Welcome Back!</h1>
           <div class="wrap-input100">
-            <span class="label-input100">Username: </span>
-            <input class="input100" type="text" name="usrname" placeholder="Type your username"/>
+            <span class="label-input100">Email: </span>
+            <input class="input100" type="text" name="usrname" placeholder="Enter your email"/>
             <span class="focus-input100" data-symbol="&#xf206;"></span>
           </div>
           <div class="wrap-input100">
             <span class="label-input100">Password: </span>
-            <input class="input100" type="password" name="pass" placeholder="Type your password"/>
+            <input class="input100" type="password" name="pass" placeholder="Enter your password"/>
             <span class="focus-input100" data-symbol="&#xf190;"></span>
           </div>
           <div class="caps-lock-warning">

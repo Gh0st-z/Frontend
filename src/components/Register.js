@@ -1,29 +1,18 @@
 import React, {useState} from 'react';
+import './Register.css'
+import '../static/vendor/bootstrap/css/bootstrap.min.css'
+import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
+import '../static/fonts/iconic/css/material-design-iconic-font.min.css'
+import '../static/vendor/animate/animate.css'
+import '../static/vendor/css-hamburgers/hamburgers.min.css'
+import '../static/vendor/animsition/css/animsition.min.css'
+import '../static/vendor/select2/select2.min.css'
+import '../static/vendor/daterangepicker/daterangepicker.css'
 
 function Registerform(){
     return(
-    <div>
-        <header class="header">
-      <nav class="navbar navbar-expand-lg navbar-light py-3">
-          <div class="container">
-
-          </div>
-      </nav>
-    </header>
-    <div class="col-md-7 col-lg-6 ml-auto">
-        <form action="" method="POST" enctype="multipart/form-data">
-            <div class="row">
-                <div class="input-group col-lg-6 mb-4">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white px-4 border-md border-right-0">
-                            <i class="fa fa-user text-muted"></i>
-                        </span>
-                    </div>
-                    <input id="firstName" type="text" name="firstname" placeholder="First Name" class="form-control bg-white border-left-0 border-md"/>
-                </div>
-            </div>
-        </form>
-    </div>
+    <div id = "main">
+       
     </div>
     );
 }
