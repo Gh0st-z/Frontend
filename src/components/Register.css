@@ -36,7 +36,7 @@
     width: 450px;
   }
 
-  #wb{
+  #cacc{
     margin: 15px;
     font-size: 25px;
     text-align: left;
@@ -140,7 +140,7 @@
     font-family: 'Ubuntu', sans-serif;
   }
   
-  .login-btn{
+  .register-btn{
     font-family: 'Ubuntu', sans-serif;
     width: 200px;
     height: 40px;
@@ -153,7 +153,7 @@
     transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out, color 0.3s ease-in-out;
   }
   
-  .login-btn:hover {
+  .register-btn:hover {
     background-color: #a64bf4;
     border: 2px solid #070807;
     color: #ffffff;
@@ -173,6 +173,10 @@
     color: red;
     margin-top: 5px;
     font-size: 12px;
+  }
+
+  #linkreg{
+    font-family: 'Ubuntu', sans-serif;
   }
 
   .right-side{

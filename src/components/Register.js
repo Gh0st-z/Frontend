@@ -16,10 +16,20 @@ function Registerform(){
       <div id = 'left-side'>
         <div class = "login-form">
             <form action="" method="POST" enctype="multipart/form-data">
-            <h1 id = "wb">Create an account</h1>
+            <h1 id = "cacc">Create an account</h1>
             <div class="wrap-input100">
-                <span class="label-input100">Email: </span>
-                <input class="input100" type="text" name="usrname" placeholder="Enter your email"/>
+                <span class="label-input100">First Name: </span>
+                <input class="input100" type="text" name="first_name" placeholder="First Name"/>
+                <span class="focus-input100" data-symbol="&#xf206;"></span>
+            </div>
+            <div class="wrap-input100">
+                <span class="label-input100">Middle Name: </span>
+                <input class="input100" type="text" name="middle_name" placeholder="Middle Name"/>
+                <span class="focus-input100" data-symbol="&#xf206;"></span>
+            </div>
+            <div class="wrap-input100">
+                <span class="label-input100">Last Name: </span>
+                <input class="input100" type="text" name="last_name" placeholder="Last Name"/>
                 <span class="focus-input100" data-symbol="&#xf206;"></span>
             </div>
             <div class="wrap-input100">
@@ -32,11 +42,11 @@ function Registerform(){
             </div>
             <a href="#" id="for-pass">Forgot Password?</a>
             <div class="wrap-input100">
-                <button class="login-btn">Login</button>
+                <button class="register-btn">Login</button>
             </div>
             <span id="account">Don't have an account?</span><br/>
             <nav>
-                <Link to="/"> Create an account</Link>
+                <Link id='linkreg' to="/"> Create an account</Link>
             </nav>
             </form>
         </div>

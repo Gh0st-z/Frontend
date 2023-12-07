@@ -203,6 +203,11 @@
     display: block;
     margin-left: 7px;
   }
+
+  #loginlink{
+    font-family: 'Ubuntu', sans-serif;
+    
+  }
   
   .social-icons {
     display: flex;

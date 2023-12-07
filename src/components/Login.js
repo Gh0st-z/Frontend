@@ -36,7 +36,7 @@ function LoginForm() {
           </div>
           <span id="account">Don't have an account?</span><br/>
           <nav>
-            <Link to="/register"> Create an account</Link>
+            <Link id="loginlink" to="/register"> Create an account</Link>
           </nav>
         </form>
       </div>
