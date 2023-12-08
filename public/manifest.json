@@ -3,7 +3,7 @@
   "short_name": "MedsHub",
   "start_url": "/",
   "display": "standalone",
-  "description": "A timer Progressive Web App",
+  "description": "Online E-Pharmacy web application",
   "host": "http://onlinemedshub.metacept.com.np/",
   "iconUrl": "https://www.flaticon.com/free-icon/library_10832132?term=reactjs&page=1&position=2&origin=search&related_id=10832132",
   "theme_color": "#010000",

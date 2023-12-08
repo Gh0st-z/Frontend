@@ -75,6 +75,7 @@
   .input100{
     width: 365px;
     border: none;
+    font-family: 'Ubuntu', sans-serif;
     border-bottom: 2px solid #ccc;
     transition: border-color 0.3s;
     outline: none;
@@ -88,6 +89,7 @@
   .n-input100{
     width: 120px;
     border: none;
+    font-family: 'Ubuntu', sans-serif;
     border-bottom: 2px solid #ccc;
     transition: border-color 0.3s;
     outline: none;

@@ -58,7 +58,7 @@ function Registerform(){
                 </div>
                 <span id="account-alr">Already have an account?</span><br/>
                 <nav>
-                    <Link id='linkreg' to="/"> Sign In Now </Link>
+                    <Link id='linkreg' to="/login"> Sign In Now </Link>
                 </nav>
             </div>
             </form>
