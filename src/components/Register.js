@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Register.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
@@ -11,6 +12,7 @@ import '../static/vendor/select2/select2.min.css'
 import '../static/vendor/daterangepicker/daterangepicker.css'
 
 function Registerform(){
+
     return(
     <div id = 'main_reg'>
       <div id = 'left-side'>

@@ -19,7 +19,7 @@ function LoginForm() {
           <h1 id = "wb">Welcome Back!</h1>
           <div class="wrap-input100">
             <span class="label-input100">Email: </span>
-            <input class="input100" type="text" name="usrname" placeholder="Enter your email"/>
+            <input class="input100" type="text" name="email" placeholder="Enter your email"/>
             <span class="focus-input100" data-symbol="&#xf206;"></span>
           </div>
           <div class="wrap-input100">
