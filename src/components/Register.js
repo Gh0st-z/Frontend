@@ -1,7 +1,9 @@
 import React, {lazy, useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Register.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../static/css/Register.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import '../static/fonts/iconic/css/material-design-iconic-font.min.css'
@@ -22,16 +24,42 @@ function Registerform(){
         password: '',
     });
 
+    const [formKey, setFormKey] = useState(0);
+
+    const showToast = (type, message) => {
+        toast[type](message, {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+    };
+
     const handleSubmit= (e) =>{
         e.preventDefault();
-        axios.post('http://localhost:8000/autho/register/', formData)
-        .then(response => {
-            console.log(response.data.message);
-            setMessage(response.data.message);
-        }).catch(error =>{
-            console.log(error);
-            setMessage('Error occured during registration.');
-        });
+        if (formData.first_name.trim() ||
+            formData.last_name.trim() ||
+            formData.email.trim() ||
+            formData.phone_number.trim() ||
+            formData.password.trim()){
+                showToast('error', 'Please fill out all the fields!');
+            }
+        else{
+            axios.post('http://localhost:8000/autho/register/', formData)
+            .then(response => {
+                console.log(response.data.message);
+                setMessage(response.data.message);
+                showToast('success', 'Account successfully created!');
+                setFormKey((prevKey) => prevKey + 1);
+            }).catch(error =>{
+                console.log(error);
+                setMessage('Error occurred during registration.');
+                showToast('error', 'Error occurred during registration.');
+            });
+        }
+        
     };
 
     const handleInputChange = (e) => {
@@ -44,9 +72,10 @@ function Registerform(){
       
     return(
     <div id = 'main_reg'>
-      <div id = 'left-side'>
+    <ToastContainer/>
+    <div id = 'left-side'>
         <div class = "reg-form">
-            <form action="" method="POST" enctype="multipart/form-data" onSubmit={handleSubmit}>
+            <form key={formKey} action="" method="POST" enctype="multipart/form-data" onSubmit={handleSubmit}>
             <h1 id = "cacc">Create an account</h1>
             <div class="name-input100">
                 <span class="name-label-input100">First Name: </span>
@@ -94,7 +123,15 @@ function Registerform(){
             </div>
             </form>
         </div>
-      </div>
+    </div>
+    <div id = "right-side">
+        <div class = "pharma-form">
+            <h3>Have your own pharmacy?</h3>
+            <h6>Sign up as an owner to add your own pharmacy as a vendor in the application and join us fulfill pharmaceutical
+                needs throughout the country.</h6>
+            <button class = "business-acc-btn"><Link id="linkpharma" to="">Create a business account</Link></button>
+        </div>
+    </div>
     </div>
     );
 }

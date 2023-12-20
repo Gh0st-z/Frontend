@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css'
+import '../static/css/Login.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import '../static/fonts/iconic/css/material-design-iconic-font.min.css'
