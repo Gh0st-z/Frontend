@@ -179,6 +179,13 @@
     font-family: 'Ubuntu', sans-serif;
   }
   
+  .toast-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .separator {
     display: flex;
     align-items: center;

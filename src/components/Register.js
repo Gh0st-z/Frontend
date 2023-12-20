@@ -23,6 +23,10 @@ function Registerform(){
         phone_number: '',
         password: '',
     });
+    
+    const [passData, setPassData] = useState({
+        password2: '',
+    });
 
     const [formKey, setFormKey] = useState(0);
 
@@ -39,27 +43,35 @@ function Registerform(){
 
     const handleSubmit= (e) =>{
         e.preventDefault();
-        if (formData.first_name.trim() ||
-            formData.last_name.trim() ||
-            formData.email.trim() ||
-            formData.phone_number.trim() ||
-            formData.password.trim()){
-                showToast('error', 'Please fill out all the fields!');
-            }
+        if (
+            !formData.first_name.trim() ||
+            !formData.middle_name.trim() ||
+            !formData.last_name.trim() ||
+            !formData.email.trim() ||
+            !formData.phone_number.trim() ||
+            !formData.password.trim()
+          ){
+            showToast('error', 'Please fill in all fields.');
+          }
         else{
-            axios.post('http://localhost:8000/autho/register/', formData)
-            .then(response => {
-                console.log(response.data.message);
-                setMessage(response.data.message);
-                showToast('success', 'Account successfully created!');
-                setFormKey((prevKey) => prevKey + 1);
-            }).catch(error =>{
-                console.log(error);
-                setMessage('Error occurred during registration.');
-                showToast('error', 'Error occurred during registration.');
-            });
+            if (formData.password != passData.password2) {
+                showToast('error', 'The passwords do not match!');
+            }
+            else{
+                axios.post('http://localhost:8000/autho/register/', formData)
+                .then(response => {
+                    console.log(response.data.message);
+                    setMessage(response.data.message);
+                    showToast('success', 'Account successfully created!');
+                    setFormKey((prevKey) => prevKey + 1);
+                }).catch(error =>{
+                    console.log(error);
+                    setMessage('Error occurred during registration.');
+                    showToast('error', 'Error occurred during registration.');
+                }); 
+            }
+           
         }
-        
     };
 
     const handleInputChange = (e) => {
@@ -69,6 +81,14 @@ function Registerform(){
             [name]: value,
         }));
     };
+
+    const handlePassValidation = (e) => {
+        const {name, value} = e.target;
+        setPassData((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    }
       
     return(
     <div id = 'main_reg'>
@@ -106,7 +126,7 @@ function Registerform(){
             </div>
             <div class="wrap-input100">
                 <span class="label-input100">Confirm Password: </span>
-                <input class="input100" type="password" name="password2" placeholder="Re-Enter your password"/>
+                <input class="input100" type="password" name="password2" placeholder="Re-Enter your password" onChange={handlePassValidation}/>
                 <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
             <div class="caps-lock-warning">
@@ -118,7 +138,7 @@ function Registerform(){
                 </div>
                 <span id="account-alr">Already have an account?</span><br/>
                 <nav>
-                    <Link id='linkreg' to="/login"> Sign In Now </Link>
+                    <Link id='linkreg' to="/"> Sign In Now </Link>
                 </nav>
             </div>
             </form>

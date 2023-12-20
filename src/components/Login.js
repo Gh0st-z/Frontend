@@ -1,5 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import axios from 'axios';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import '../static/css/Login.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
@@ -11,20 +13,73 @@ import '../static/vendor/select2/select2.min.css'
 import '../static/vendor/daterangepicker/daterangepicker.css'
 
 function LoginForm() {
+  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [formKey, setFormKey] = useState(0);
+  const navigate = useNavigate();
+
+  const showToast = (type, message) => {
+    toast[type](message, {
+      position: 'top-center',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+  
+  const handleSubmit= (e) =>{
+    e.preventDefault();
+    if (
+      !formData.email.trim() ||
+      !formData.password.trim()
+      ){
+        showToast('error', 'Please fill in all fields.');
+      }
+      else{
+        axios.post('http://localhost:8000/autho/login/', formData)
+        .then(response => {
+          console.log(response.data.message);
+          setMessage(response.data.message);
+          showToast('success', 'Login Successful');
+          setFormKey((prevKey) => prevKey + 1);
+          navigate('/home');
+        }).catch(error =>{
+          console.log(error);
+          setMessage('Error occurred during Logging in.');
+          showToast('error', 'Error occurred during Logging in.');
+        }); 
+      }
+  };
+
+  const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prevState) => ({
+          ...prevState,
+          [name]: value,
+      }));
+  }
+
   return (
     <div id="main">
+      <ToastContainer/>
       <div class = "container">
       <div class = "login-form">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form key={formKey} action="" method="POST" enctype="multipart/form-data" onSubmit={handleSubmit}>
           <h1 id = "wb">Welcome Back!</h1>
           <div class="wrap-input100">
             <span class="label-input100">Email: </span>
-            <input class="input100" type="text" name="email" placeholder="Enter your email"/>
+            <input class="input100" type="text" name="email" placeholder="Enter your email" onChange={handleInputChange}/>
             <span class="focus-input100" data-symbol="&#xf206;"></span>
           </div>
           <div class="wrap-input100">
             <span class="label-input100">Password: </span>
-            <input class="input100" type="password" name="pass" placeholder="Enter your password"/>
+            <input class="input100" type="password" name="password" placeholder="Enter your password" onChange={handleInputChange}/>
             <span class="focus-input100" data-symbol="&#xf190;"></span>
           </div>
           <div class="caps-lock-warning">
@@ -43,6 +98,6 @@ function LoginForm() {
     </div>
     </div>
   );
-}
+};
 
 export default LoginForm;
