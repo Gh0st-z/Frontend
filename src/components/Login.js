@@ -47,6 +47,7 @@ function LoginForm() {
           console.log(response.data.message);
           setMessage(response.data.message);
           showToast('success', 'Login Successful');
+          localStorage.setItem('isLoggedIn', 'true');
           setFormKey((prevKey) => prevKey + 1);
           navigate('/home');
         }).catch(error =>{
