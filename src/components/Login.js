@@ -53,7 +53,7 @@ function LoginForm() {
         }).catch(error =>{
           console.log(error);
           setMessage('Error occurred during Logging in.');
-          showToast('error', 'Error occurred during Logging in.');
+          showToast('error', 'Incorrect Login Details!');
         }); 
       }
   };
