@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-    asim:
-        image: asim
+    onlinemedshub:
+        image: onlinemedshub
         build:
             context: .
         entrypoint: ./execute.sh
