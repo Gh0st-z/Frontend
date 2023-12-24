@@ -44,8 +44,26 @@ function HomePage(){
   return(
     <div id="main-home">
       <ToastContainer/>
-      <div id="head-nav">
-        
+      <div id="ecom-head-nav">
+        <div id="head-nav-link">
+          <div class="search-container">
+            <form action="/search" method="get">
+              <input type="text" placeholder="Search for Products, Medicine..." name="search" class="search-input"/>
+              <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+          <button class="upload-pres">
+            <i class="fa fa-camera" aria-hidden="true"></i>
+            Upload Prescriptions
+          </button>
+          <button class="nav-btn"><Link class="nav-link">Browse</Link></button>
+          <button class="nav-btn"><Link class="nav-link">Brands</Link></button>
+        </div>
+      </div>
+      <div id="ecom-body">
+
       </div>
     </div>
   );

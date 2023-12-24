@@ -18,10 +18,110 @@
     width: 100%;
   }
 
-  #head-nav{
+  #ecom-head-nav{
     height: 10vh;
     width: 100%;
     background-color: rgba(206, 227, 245, 0.925);
+    display: flex;
   }
 
-  
+  #head-nav-link{
+    height: 10vh;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    display: flex;
+  }
+
+  .nav-btn{
+    border: none;
+    background-color: rgba(206, 227, 245, 0.925);
+    width: 100px;
+  }
+
+  .nav-link{
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+  }
+
+  .nav-btn:hover{
+    color: #a64bf4;
+  }
+
+  .search-container {
+    position: relative; 
+  }
+
+  .search-input {
+      padding: 10px 20px 10px 40px;
+      font-size: 16px; 
+      border: 2px solid #ddd; 
+      border-radius: 20px;
+      outline: none; 
+      width: 400px; 
+  }
+
+  .search-button {
+    position: absolute;
+    margin-top: 23px;
+    left: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000000; 
+    font-size: 20px; 
+  }
+
+  .search-button i {
+      pointer-events: none; 
+  }
+
+  .search-icon {
+      color: #000000;
+      font-size: 20px;
+  }
+
+  .search-button::-moz-focus-inner {
+      border: 0;
+  }
+
+  .search-input::placeholder {
+      color: #888; 
+      opacity: 1; 
+  }
+
+  .search-input:focus {
+      border-color: #a64bf4;
+  }
+
+  .upload-pres {
+    background-color: #a64bf4; 
+    color: white;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s; 
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.upload-pres:hover {
+    background-color: #a80946;
+}
+
+.upload-pres i.fa-camera {
+    font-size: 24px;
+}
+
+.upload-pres:focus {
+    outline: none; 
+}
