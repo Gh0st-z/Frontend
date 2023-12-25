@@ -58,7 +58,7 @@ function Registerform(){
                 showToast('error', 'The passwords do not match!');
             }
             else{
-                const emailCheckResponse = await axios.get('http://167.86.75.86:8000/autho/register-get/', {
+                const emailCheckResponse = await axios.get('https://167.86.75.86:8000/autho/register-get/', {
                     params: {
                         email: formData.email,
                     },
@@ -68,7 +68,7 @@ function Registerform(){
                     setFormKey((prevKey) => prevKey + 1);
                 }
                 else{
-                    axios.post('http://167.86.75.86:8000/autho/register/', formData)
+                    axios.post('https://167.86.75.86:8000/autho/register/', formData)
                     .then(response => {
                         console.log(response.data.message);
                         setMessage(response.data.message);
