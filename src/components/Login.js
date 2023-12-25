@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -32,6 +32,22 @@ function LoginForm() {
       draggable: true,
     });
   };
+
+  useEffect(() => {
+    const isLoggedout = localStorage.getItem('isLoggedout') === 'true';
+
+    if (isLoggedout) {
+      toast.success('Logged out Successfully!', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      localStorage.removeItem('isLoggedout');
+    }
+  }, []);
   
   const handleSubmit= (e) =>{
     e.preventDefault();
