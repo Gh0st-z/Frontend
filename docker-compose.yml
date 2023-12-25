@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-    onlinemedshub:
-        image: onlinemedshub
+    onlinemedshubweb:
+        image: onlinemedshubweb
         build:
             context: .
         entrypoint: ./execute.sh
