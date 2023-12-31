@@ -58,7 +58,7 @@ function LoginForm() {
         showToast('error', 'Please fill in all fields.');
       }
       else{
-        axios.post('https://167.86.75.86:8000/autho/login/', formData)
+        axios.post('http://localhost:8000/autho/login/', formData)
         .then(response => {
           console.log(response.data.message);
           setMessage(response.data.message);

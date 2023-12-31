@@ -45,7 +45,6 @@ function Registerform(){
         e.preventDefault();
         if (
             !formData.first_name.trim() ||
-            !formData.middle_name.trim() ||
             !formData.last_name.trim() ||
             !formData.email.trim() ||
             !formData.phone_number.trim() ||
@@ -57,8 +56,11 @@ function Registerform(){
             if (formData.password != passData.password2) {
                 showToast('error', 'The passwords do not match!');
             }
+            else if (!/^\d+$/.test(formData.phone_number)) {
+                showToast('error', 'Phone number should contain only numeric values.');
+            }
             else{
-                const emailCheckResponse = await axios.get('https://167.86.75.86:8000/autho/register-get/', {
+                const emailCheckResponse = await axios.get('http://localhost:8000/autho/register-get/', {
                     params: {
                         email: formData.email,
                     },
@@ -68,7 +70,7 @@ function Registerform(){
                     setFormKey((prevKey) => prevKey + 1);
                 }
                 else{
-                    axios.post('https://167.86.75.86:8000/autho/register/', formData)
+                    axios.post('http://localhost:8000/autho/register/', formData)
                     .then(response => {
                         console.log(response.data.message);
                         setMessage(response.data.message);
@@ -87,10 +89,22 @@ function Registerform(){
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+        if (name === 'phone_number' && !isNaN(value)) {
+            setFormData((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        } else if (name !== 'phone_number') {
+            setFormData((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        }
         setFormData((prevState) => ({
             ...prevState,
             [name]: value,
         }));
+
     };
 
     const handlePassValidation = (e) => {
