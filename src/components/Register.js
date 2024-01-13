@@ -41,6 +41,16 @@ function Registerform(){
         });
     };
 
+    const getServerIPAddress = () => {
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            return 'http://localhost:8000';
+        } else {
+            return `http://${window.location.hostname}:8000`;
+        }
+    };
+    
+    const API_BASE_URL = getServerIPAddress();
+
     const handleSubmit= async(e) =>{
         e.preventDefault();
         if (
@@ -60,7 +70,7 @@ function Registerform(){
                 showToast('error', 'Phone number should contain only numeric values.');
             }
             else{
-                const emailCheckResponse = await axios.get('http://localhost:8000/autho/register-get/', {
+                const emailCheckResponse = await axios.get(API_BASE_URL + '/autho/register-get/', {
                     params: {
                         email: formData.email,
                     },
@@ -70,7 +80,7 @@ function Registerform(){
                     setFormKey((prevKey) => prevKey + 1);
                 }
                 else{
-                    axios.post('http://localhost:8000/autho/register/', formData)
+                    axios.post( API_BASE_URL + '/autho/register/', formData)
                     .then(response => {
                         console.log(response.data.message);
                         setMessage(response.data.message);
