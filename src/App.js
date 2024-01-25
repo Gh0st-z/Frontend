@@ -4,6 +4,7 @@ import Registerform  from './components/Register';
 import HomePage  from './components/Home';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Registerpharma from './components/PharmaRegister';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<Registerform />} />
         <Route path="/home" element={<HomePage/>} />
+        <Route path="/register-pharma" element={<Registerpharma/>} />
       </Routes>
     </Router>
   );

@@ -184,7 +184,7 @@ function Registerform(){
             <h3>Have your own pharmacy?</h3>
             <h6>Sign up as an owner to add your own pharmacy as a vendor in the application and join us fulfill pharmaceutical
                 needs throughout the country.</h6>
-            <button class = "business-acc-btn"><Link id="linkpharma" to="">Create a business account</Link></button>
+            <button class = "business-acc-btn"><Link id="linkpharma" to="/register-pharma">Create a business account</Link></button>
         </div>
     </div>
     </div>
