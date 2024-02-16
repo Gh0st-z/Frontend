@@ -22,6 +22,7 @@ function Registerform(){
         email: '',
         phone_number: '',
         password: '',
+        role: 'customer'
     });
     
     const [passData, setPassData] = useState({
