@@ -64,8 +64,17 @@ function LoginForm() {
           setMessage(response.data.message);
           showToast('success', 'Login Successful');
           localStorage.setItem('isLoggedIn', 'true');
+          const userRole = response.data.role;
+          if (userRole === 'admin') {
+                navigate('/admin/dashboard'); 
+          } else if (userRole === 'customer') {
+                navigate('/home'); 
+          } else {
+            console.error('Unexpected user role:', userRole);
+            setMessage('Login failed: Unexpected User Role');
+            showToast('error', 'Login Failed: Unexpected User Role');
+          }
           setFormKey((prevKey) => prevKey + 1);
-          navigate('/home');
         }).catch(error =>{
           console.log(error);
           setMessage('Error occurred during Logging in.');

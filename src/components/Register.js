@@ -129,7 +129,6 @@ function Registerform(){
     return(
     <div id = 'main_reg'>
     <ToastContainer/>
-    <div id = 'left-side'>
         <div class = "reg-form">
             <form key={formKey} action="" method="POST" enctype="multipart/form-data" onSubmit={handleSubmit}>
             <h1 id = "cacc">Create an account</h1>
@@ -142,8 +141,8 @@ function Registerform(){
                 <input class="n-input100" type="text" name="middle_name" onChange={handleInputChange}/>
             </div>
             <div class="name-input100">
-                <span class="name-label-input100">Last Name: </span>
-                <input class="n-input100" type="text" name="last_name" onChange={handleInputChange}/>
+                <span class="lname-label-input100">Last Name: </span>
+                <input class="ln-input100" type="text" name="last_name" onChange={handleInputChange}/>
             </div>
             <div class="wrap-input100">
                 <span class="label-input100">Email: </span>
@@ -168,26 +167,13 @@ function Registerform(){
             <div class="caps-lock-warning">
                 <p>Caps Lock is enabled.</p>
             </div>
-            <div class = "align-mid">
-                <div class="wrap-input100">
-                    <button class="register-btn">Create</button>
-                </div>
-                <span id="account-alr">Already have an account?</span><br/>
-                <nav>
-                    <Link id='linkreg' to="/"> Sign In Now </Link>
-                </nav>
+            <div class="wrap-input100">
+                <button class="register-btn">Create</button>
             </div>
+            <p id="account-alr">Already have an account? <Link to="/">Sign in here</Link></p>
+            <p id="account-pharm">Need to register a pharmacy? <Link to="/register-pharma">Sign in here</Link></p>
             </form>
         </div>
-    </div>
-    <div id = "right-side">
-        <div class = "pharma-form">
-            <h3>Have your own pharmacy?</h3>
-            <h6>Sign up as an owner to add your own pharmacy as a vendor in the application and join us fulfill pharmaceutical
-                needs throughout the country.</h6>
-            <button class = "business-acc-btn"><Link id="linkpharma" to="/register-pharma">Create a business account</Link></button>
-        </div>
-    </div>
     </div>
     );
 }
