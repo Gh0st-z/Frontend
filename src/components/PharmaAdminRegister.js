@@ -13,7 +13,7 @@ import '../static/vendor/animsition/css/animsition.min.css'
 import '../static/vendor/select2/select2.min.css'
 import '../static/vendor/daterangepicker/daterangepicker.css'
 
-function Registerpharma(){
+function RegisterPharmaAdmin(){
     const [message, setMessage] = useState('');
     const [formData, setFormData] = useState({
         first_name: '',
@@ -177,4 +177,4 @@ function Registerpharma(){
     );
 }
 
-export default Registerpharma;
+export default RegisterPharmaAdmin;

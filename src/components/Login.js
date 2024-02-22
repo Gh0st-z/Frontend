@@ -66,7 +66,7 @@ function LoginForm() {
           localStorage.setItem('isLoggedIn', 'true');
           const userRole = response.data.role;
           if (userRole === 'admin') {
-                navigate('/admin/dashboard'); 
+                navigate('/register-pharma'); 
           } else if (userRole === 'customer') {
                 navigate('/home'); 
           } else {

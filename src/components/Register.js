@@ -171,7 +171,7 @@ function Registerform(){
                 <button class="register-btn">Create</button>
             </div>
             <p id="account-alr">Already have an account? <Link to="/">Sign in here</Link></p>
-            <p id="account-pharm">Need to register a pharmacy? <Link to="/register-pharma">Sign in here</Link></p>
+            <p id="account-pharm">Need to register a pharmacy? <Link to="/register-admin">Sign in here</Link></p>
             </form>
         </div>
     </div>
