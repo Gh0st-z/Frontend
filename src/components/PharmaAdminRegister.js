@@ -147,7 +147,7 @@ function RegisterPharmaAdmin(){
                 <div class="pharma-wrap-input100">
                     <span class="pharma-label-input100">Email: </span>
                     <input class="pharma-input100" type="email" name="email" placeholder="Enter your Email" onChange={handleInputChange}/>
-                    <span class="pharma-focus-input100" data-symbol="&#xf206;"></span>
+                    <span class="pharma-focus-input100" data-symbol="&#x2709;"></span>
                 </div>
                 <div class="pharma-wrap-input100">
                     <span class="pharma-label-input100">Phone Number: </span>

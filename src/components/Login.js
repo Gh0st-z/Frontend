@@ -101,7 +101,7 @@ function LoginForm() {
           <div class="wrap-input100">
             <span class="label-input100">Email: </span>
             <input class="input100" type="text" name="email" placeholder="Enter your email" onChange={handleInputChange}/>
-            <span class="focus-input100" data-symbol="&#xf206;"></span>
+            <span class="focus-input100" data-symbol="&#x2709;"></span>
           </div>
           <div class="wrap-input100">
             <span class="label-input100">Password: </span>

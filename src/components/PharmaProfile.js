@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../static/css/PharmaRegister.css'
+import '../static/css/PharmaProfile.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import '../static/fonts/iconic/css/material-design-iconic-font.min.css'
@@ -16,17 +16,13 @@ import '../static/vendor/daterangepicker/daterangepicker.css'
 function Registerpharma(){
     const [message, setMessage] = useState('');
     const [formData, setFormData] = useState({
-        first_name: '',
-        middle_name: '',
-        last_name: '',
-        email: '',
+        pharmacy_name: '',
+        license_number: '',
+        address: '',
         phone_number: '',
-        password: '',
-        role: 'admin'
-    });
-    
-    const [passData, setPassData] = useState({
-        password2: '',
+        pharmacy_type: '',
+        role: '',
+        website_url: ''
     });
 
     const [formKey, setFormKey] = useState(0);
@@ -55,19 +51,16 @@ function Registerpharma(){
     const handleSubmit= async(e) =>{
         e.preventDefault();
         if (
-            !formData.first_name.trim() ||
-            !formData.last_name.trim() ||
-            !formData.email.trim() ||
+            !formData.pharmacy_name.trim() ||
+            !formData.license_number.trim() ||
+            !formData.address.trim() ||
             !formData.phone_number.trim() ||
-            !formData.password.trim()
+            !formData.pharmacy_type.trim()
           ){
             showToast('error', 'Please fill in all fields.');
           }
         else{
-            if (formData.password != passData.password2) {
-                showToast('error', 'The passwords do not match!');
-            }
-            else if (!/^\d+$/.test(formData.phone_number)) {
+            if (!/^\d+$/.test(formData.phone_number)) {
                 showToast('error', 'Phone number should contain only numeric values.');
             }
             else{
@@ -117,60 +110,53 @@ function Registerpharma(){
         }));
 
     };
-
-    const handlePassValidation = (e) => {
-        const {name, value} = e.target;
-        setPassData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    }
     
     return(
         <div id = 'pharma_reg'>
         <ToastContainer/>
             <div class = "pharma-reg-form">
                 <form key={formKey} action="" method="POST" enctype="multipart/form-data" onSubmit={handleSubmit}>
-                <h1 id = "pacc">Create an admin account</h1>
-                <div class="pharma-name-input100">
-                    <span class="pharma-name-label-input100">First Name: </span>
-                    <input class="pharma-n-input100" type="text" name="first_name" onChange={handleInputChange}/>
-                </div>
-                <div class="pharma-name-input100">
-                    <span class="pharma-name-label-input100">Middle Name: </span>
-                    <input class="pharma-n-input100" type="text" name="middle_name" onChange={handleInputChange}/>
-                </div>
-                <div class="pharma-name-input100">
-                    <span class="pharma-lname-label-input100">Last Name: </span>
-                    <input class="pharma-ln-input100" type="text" name="last_name" onChange={handleInputChange}/>
-                </div>
+                <h1 id = "racc">Register Pharma</h1>
                 <div class="pharma-wrap-input100">
-                    <span class="pharma-label-input100">Email: </span>
-                    <input class="pharma-input100" type="email" name="email" placeholder="Enter your Email" onChange={handleInputChange}/>
-                    <span class="pharma-focus-input100" data-symbol="&#xf206;"></span>
+                    <span class="pharma-label-input100">Pharmacy Name: </span>
+                    <input class="pharma-input100" type="text" name="pharmacy_name" placeholder="Enter Pharmacy Name" onChange={handleInputChange}/>
+                    <span class="pharma-focus-input100" data-symbol="&#x269A;"></span>
                 </div>
-                <div class="pharma-wrap-input100">
-                    <span class="pharma-label-input100">Phone Number: </span>
-                    <input class="pharma-input100" type="text" name="phone_number" placeholder="Enter your Phone Number" onChange={handleInputChange}/>
-                    <span class="pharma-focus-input100" data-symbol="&#9743;"></span>
+                <div class="sdo-wrap-input100">
+                    <span class="sdo-label-input100">License No.: </span>
+                    <input class="sdo-input100" type="number" name="license_number" onChange={handleInputChange}/>
                 </div>
-                <div class="pharma-wrap-input100">
-                    <span class="pharma-label-input100">Password: </span>
-                    <input class="pharma-input100" type="password" name="password" placeholder="Enter your password" onChange={handleInputChange}/>
-                    <span class="pharma-focus-input100" data-symbol="&#xf190;"></span>
+                <div class="sdt-wrap-input100">
+                    <span class="sdt-label-input100">Address: </span>
+                    <input class="sdt-input100" type="text" name="address" onChange={handleInputChange}/>
                 </div>
-                <div class="pharma-wrap-input100">
-                    <span class="pharma-label-input100">Confirm Password: </span>
-                    <input class="pharma-input100" type="password" name="password2" placeholder="Re-Enter your password" onChange={handlePassValidation}/>
-                    <span class="pharma-focus-input100" data-symbol="&#xf190;"></span>
+                <div class="sdo-wrap-input100">
+                    <span class="sdo-label-input100">Phone Number: </span>
+                    <input class="sdo-input100" type="text" name="phone_number" onChange={handleInputChange}/>
                 </div>
-                <div class="caps-lock-warning">
-                    <p>Caps Lock is enabled.</p>
+                <div class="sdt-wrap-input100">
+                    <span class="sdt-label-input100">Pharmacy Type: </span>
+                    <input class="sdt-input100" type="text" name="pharmacy_type" onChange={handleInputChange}/>
+                </div>
+                <div class="sdo-wrap-input100">
+                    <span class="sdo-label-input100">Logo: </span>
+                    <input class="sdo-file-input100" type="file" name="logo" onChange={handleInputChange}/>
+                </div>
+                <div class="sdt-wrap-input100">
+                    <span class="sdt-label-input100">Website URL: </span>
+                    <input class="sdt-input100" type="text" name="website_url" onChange={handleInputChange}/>
+                </div>
+                <div class="sdo-checkbox-wrap-input100">
+                    <input class="sdo-checkbox-input100" type="checkbox" name="t_n_c"/>
+                    <span class="sdo-label-input100">Terms and Conditions </span>
+                </div>
+                <div class="sdt-checkbox-wrap-input100">
+                    <input class="sdt-checkbox-input100" type="checkbox" name="p_p"/>
+                    <span class="sdt-checkbox-label-input100">Privacy Policy </span>
                 </div>
                 <div class="pharma-wrap-input100">
                     <button class="pharma-register-btn">Create</button>
                 </div>
-                <p id="account-alr">Already have an account? <Link to="/">Sign in here</Link></p>
                 </form>
             </div>
         </div>

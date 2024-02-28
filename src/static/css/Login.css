@@ -84,6 +84,10 @@
   .input100:focus {
     border-color: #7EBBB0;
   }
+
+  .input100:focus::placeholder {
+    color:transparent;
+  }
   
   .focus-input100 {
     position: absolute;

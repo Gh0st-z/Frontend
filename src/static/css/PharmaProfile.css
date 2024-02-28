@@ -32,13 +32,11 @@
     width: 570px;
   }
 
-  ::placeholder
-
   .pharma-content{
     font-family: 'Ubuntu', sans-serif;
   }
 
-  #pacc{
+  #racc{
     margin-bottom: 30px;
     font-size: 25px;
     text-align: center;
@@ -47,6 +45,34 @@
   
   .pharma-wrap-input100 {
     width: 100%;
+    margin: 15px;
+    position: relative;
+  }
+
+  .sdo-wrap-input100{
+    display: inline-block;
+    width: 30%;
+    margin: 15px;
+    position: relative;
+  }
+
+  .sdo-checkbox-wrap-input100{
+    display: inline-block;
+    margin-right: 20;
+    margin: 15px;
+    position: relative;
+  }
+
+  .sdt-wrap-input100{
+    display: inline-block;
+    width: 40%;
+    margin: 15px;
+    position: relative;
+  }
+
+  .sdt-checkbox-wrap-input100{
+    display: inline-block;
+    margin-right: 20;
     margin: 15px;
     position: relative;
   }
@@ -63,18 +89,32 @@
     display: block;
   }
 
-  .pharma-name-label-input100{
+  .sdo-label-input100{
     font-family: 'Ubuntu', sans-serif;
-    margin-left: 17px;
-    display: block;
+    text-align: left;
+    display: inline-block;
+    position: relative;
   }
 
-  .pharma-lname-label-input100{
+  .sdt-label-input100{
     font-family: 'Ubuntu', sans-serif;
-    margin-left: 17px;
-    display: block;
+    margin-left: 60px;
+    display: inline-block;
+    position: relative;
   }
-  
+
+  .sdo-checkbox-label-input100{
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+    position: relative;
+  }
+
+  .sdt-checkbox-label-input100{
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+    position: relative;
+  }
+
   .pharma-input100{
     width: 475px;
     border: none;
@@ -89,8 +129,8 @@
     padding: 0 6px 0 60px;
   }
 
-  .pharma-n-input100{
-    width: 125px;
+  .sdo-input100{
+    width: 195px;
     border: none;
     font-family: 'Ubuntu', sans-serif;
     border-bottom: 2px solid #8d908e;
@@ -100,46 +140,63 @@
     display: block;
     height: 30px;
     background: transparent;
-    margin-left: 17px;
     padding: 0 6px 0 0px;
   }
 
-  .pharma-ln-input100{
-    width: 167px;
+  .sdo-file-input100{
+    width: 195px;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+    transition: border-color 0.3s;
+    outline: none;
+    line-height: 1.3;
+    display: block;
+    margin-top: 10px;
+    background: transparent;
+    padding: 0 6px 0 0px;
+  }
+
+  .sdt-input100{
+    width: 240px;
     border: none;
     font-family: 'Ubuntu', sans-serif;
     border-bottom: 2px solid #8d908e;
     transition: border-color 0.3s;
+    margin-left: 60px;
     outline: none;
     line-height: 1.2;
     display: block;
     height: 30px;
     background: transparent;
-    margin-left: 17px;
     padding: 0 6px 0 0px;
   }
+
+  .sdo-checkbox-input100{
+    margin-right: 15px;
+  }
   
+  .sdt-checkbox-input100{
+    margin-left: 50px;
+    margin-right: 15px;
+  }  
+
   .pharma-input100:focus {
     border-color: #00599c;
   }
 
+  .pharma-input100:focus {
+    border-color: #00599c;
+  }
+
+  .sdo-input100:focus {
+    border-color: #00599c;
+  }
+
+  .sdt-input100:focus {
+    border-color: #00599c;
+  }
+
   .pharma-input100:focus::placeholder {
-    color: transparent;
-  }
-
-  .pharma-n-input100:focus {
-    border-color: #00599c;
-  }
-
-  .pharma-n-input100:focus::placeholder {
-    color: transparent;
-  }
-  
-  .pharma-ln-input100:focus {
-    border-color: #00599c;
-  }
-
-  .pharma-ln-input100:focus::placeholder {
     color: transparent;
   }
 
@@ -216,6 +273,34 @@
   .pharma-has-val.input100 + .pharma-focus-input100::after {
     color: #00599c;
   }
+
+  .sdo-checkbox-input100, .sdt-checkbox-input100 {
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #eee;
+    border-radius: 50%; 
+    width: 15px;
+    height: 15px; 
+    vertical-align: middle;
+    position: relative;
+  }
+
+  .sdo-checkbox-input100:checked, .sdt-checkbox-input100:checked {
+    background-color: #2196F3;
+  }
+
+  .sdo-checkbox-input100:checked:after, .sdt-checkbox-input100:checked:after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the checkmark */
+  }
   
   #for-pass{
     text-align: right;
@@ -244,34 +329,12 @@
     color: #ffffff;
   }
 
-  
-  #account-alr{
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
-  #account-pharm{
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 5px;
-  }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  .caps-lock-warning {
-    display: none;
-    color: red;
-    margin-top: 5px;
-    font-size: 12px;
-  }
-
-  #linkreg{
-    font-family: 'Ubuntu', sans-serif;
-  }
-
-  #linkpharma{
-    font-family: 'Ubuntu', sans-serif;
-    text-decoration: none;
-    color: inherit;
-  }
+input[type=number] {
+  -moz-appearance: textfield;
+}
