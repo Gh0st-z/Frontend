@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  h1, h2, h3, h4, h5, h6{
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  section{
+    padding: 60px, 0;
+    overflow: hidden;
+  }
+
+  #main-dashboard{
+    height: 100%;
+    width: 100%;
+  }
+
+  #left-row{
+    height: 100%;
+    width: 20%;
+    position: relative;
+    display: inline-block;
+    border-right: 2px solid;
+  }
+
+  #right-box{
+    height: 100%;
+    width: 70%;
+    position: relative;
+    display: inline-block;
+  }

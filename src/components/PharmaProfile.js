@@ -21,8 +21,9 @@ function Registerpharma(){
         address: '',
         phone_number: '',
         pharmacy_type: '',
-        role: '',
-        website_url: ''
+        pharmacy_logo: 'null',
+        website_url: '',
+        admin_id: localStorage.getItem('userId'),
     });
 
     const [formKey, setFormKey] = useState(0);
@@ -64,13 +65,13 @@ function Registerpharma(){
                 showToast('error', 'Phone number should contain only numeric values.');
             }
             else{
-                const emailCheckResponse = await axios.get(API_BASE_URL + '/autho/register-get/', {
+                const pharmacyCheckResponse = await axios.get(API_BASE_URL + '/pharmacy/get-pharmacy/', {
                     params: {
-                        email: formData.email,
+                        pharmacy_name: formData.pharmacy_name,
                     },
                 });
-                if(emailCheckResponse.data.exists){
-                    showToast('error', 'Email already registered!');
+                if(pharmacyCheckResponse.data.exists){
+                    showToast('error', 'Pharmacy Name already registered!');
                     setFormKey((prevKey) => prevKey + 1);
                 }
                 else{
@@ -140,18 +141,18 @@ function Registerpharma(){
                 </div>
                 <div class="sdo-wrap-input100">
                     <span class="sdo-label-input100">Logo: </span>
-                    <input class="sdo-file-input100" type="file" name="logo" onChange={handleInputChange}/>
+                    <input class="sdo-file-input100" type="file" name="pharmacy_logo" onChange={handleInputChange}/>
                 </div>
                 <div class="sdt-wrap-input100">
                     <span class="sdt-label-input100">Website URL: </span>
                     <input class="sdt-input100" type="text" name="website_url" onChange={handleInputChange}/>
                 </div>
                 <div class="sdo-checkbox-wrap-input100">
-                    <input class="sdo-checkbox-input100" type="checkbox" name="t_n_c"/>
+                    <input class="sdo-checkbox-input100" type="checkbox" name="t_n_c" required/>
                     <span class="sdo-label-input100">Terms and Conditions </span>
                 </div>
                 <div class="sdt-checkbox-wrap-input100">
-                    <input class="sdt-checkbox-input100" type="checkbox" name="p_p"/>
+                    <input class="sdt-checkbox-input100" type="checkbox" name="p_p" required/>
                     <span class="sdt-checkbox-label-input100">Privacy Policy </span>
                 </div>
                 <div class="pharma-wrap-input100">

@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registerpharma from './components/PharmaProfile';
 import RegisterPharmaAdmin from './components/PharmaAdminRegister';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/home" element={<HomePage/>} />
         <Route path="/register-admin" element={<RegisterPharmaAdmin/>} />
         <Route path="/register-pharma" element={<Registerpharma/>}/>
+        <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
       </Routes>
     </Router>
   );

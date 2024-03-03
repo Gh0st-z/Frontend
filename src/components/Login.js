@@ -48,7 +48,7 @@ function LoginForm() {
       localStorage.removeItem('isLoggedout');
     }
   }, []);
-  
+
   const handleSubmit= (e) =>{
     e.preventDefault();
     if (
@@ -60,15 +60,16 @@ function LoginForm() {
       else{
         axios.post('http://localhost:8000/autho/login/', formData)
         .then(response => {
-          console.log(response.data.message);
           setMessage(response.data.message);
           showToast('success', 'Login Successful');
           localStorage.setItem('isLoggedIn', 'true');
+          const userID = response.data.id;
+          localStorage.setItem('userId', userID);
           const userRole = response.data.role;
           if (userRole === 'admin') {
-                navigate('/register-pharma'); 
+            navigate('/register-pharma');
           } else if (userRole === 'customer') {
-                navigate('/home'); 
+            navigate('/home'); 
           } else {
             console.error('Unexpected user role:', userRole);
             setMessage('Login failed: Unexpected User Role');
