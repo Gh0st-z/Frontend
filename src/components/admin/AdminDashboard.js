@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import '../static/css/AdminDashboard.css'
+import '../../static/css/AdminDashboard.css'
 import companylogo from '../static/images/company_logo.png'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
@@ -54,11 +54,38 @@ function AdminDashboard(){
   return(
     <div id="main-dashboard">
       <ToastContainer/>
-      <div id="left-row">
-        <h1>Pharmacy name</h1>
+      <div id="left-navigation">
+        <div class="pharmacy-name">
+          Pharmacy Name
+        </div>
+        <div class="dashboard-button">
+          <button class="nav-buttons"><Link class="button-links" to="/admin-dashboard">Dashboard</Link></button>
+        </div>
+        <div class="manage-staffs">
+          <button class="nav-buttons"><Link class="button-links" to="">Manage Staffs</Link></button>
+        </div>
+        <div class="manage-users">
+          <button class="nav-buttons"><Link class="button-links" to="">Manage Users</Link></button>
+        </div>
+        <div class="manage-products">
+          <button class="nav-buttons"><Link class="button-links" to="">Manage Products</Link></button>
+        </div>
+        <div class="admin-profile">
+          <button class="nav-buttons"><Link class="button-links" to="">Admin Profile</Link></button>
+        </div>
+        <div class="logout">
+          <button class="nav-buttons"><Link class="button-links" to="">Logout</Link></button>
+        </div>
       </div>
-      <div id="right-box">
-        <h1>Right box</h1>
+      <div class="dashboard">
+        <div id="card">
+          <div id="card-header">
+            Today's Sales
+          </div>
+          <div id="card-body">
+            $10,945
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
-import './App.css';
-import LoginForm  from './components/Login';
-import Registerform  from './components/Register';
-import HomePage  from './components/Home';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Registerpharma from './components/PharmaProfile';
-import RegisterPharmaAdmin from './components/PharmaAdminRegister';
-import AdminDashboard from './components/AdminDashboard';
+import './App.css';
+import LoginForm  from './components/registration/Login';
+import Registerform  from './components/registration/Register';
+import HomePage  from './components/user/Home';
+import Registerpharma from './components/registration/PharmaProfile';
+import RegisterPharmaAdmin from './components/registration/PharmaAdminRegister';
+import AdminDashboard from './components/admin/AdminDashboard';
+import ManageStaff from './components/admin/ManageStaff';
 
 function App() {
   return (

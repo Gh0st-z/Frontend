@@ -137,13 +137,9 @@
   .n-input100:focus::placeholder {
     color: transparent;
   }
-  
-  .ln-input100:focus {
-    border-color: #7EBBB0;
-  }
 
-  .ln-input100:focus {
-    color: transparent;
+  .ln-input100:focus{
+    border-color: #7EBBB0;
   }
 
   .focus-input100 {

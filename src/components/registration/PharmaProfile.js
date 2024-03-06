@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../static/css/PharmaProfile.css'
+import '../../static/css/PharmaProfile.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import '../static/fonts/iconic/css/material-design-iconic-font.min.css'
@@ -21,7 +21,7 @@ function Registerpharma(){
         address: '',
         phone_number: '',
         pharmacy_type: '',
-        pharmacy_logo: 'null',
+        pharmacy_logo: '',
         website_url: '',
         admin_id: localStorage.getItem('userId'),
     });
@@ -51,6 +51,7 @@ function Registerpharma(){
 
     const handleSubmit= async(e) =>{
         e.preventDefault();
+        const fileInput = document.querySelector('input[type="file"]');
         if (
             !formData.pharmacy_name.trim() ||
             !formData.license_number.trim() ||
