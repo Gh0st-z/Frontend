@@ -7,7 +7,7 @@ import HomePage  from './components/user/Home';
 import Registerpharma from './components/registration/PharmaProfile';
 import RegisterPharmaAdmin from './components/registration/PharmaAdminRegister';
 import AdminDashboard from './components/admin/AdminDashboard';
-import ManageStaff from './components/admin/ManageStaff';
+import ManageStaffs from './components/admin/ManageStaff';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Route path="/register-admin" element={<RegisterPharmaAdmin/>} />
         <Route path="/register-pharma" element={<Registerpharma/>}/>
         <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
+        <Route path="/manage-staffs" element={<ManageStaffs/>}/>
       </Routes>
     </Router>
   );

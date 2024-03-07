@@ -3,15 +3,14 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import '../../static/css/AdminDashboard.css'
-import companylogo from '../static/images/company_logo.png'
-import '../static/vendor/bootstrap/css/bootstrap.min.css'
-import '../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
-import '../static/fonts/iconic/css/material-design-iconic-font.min.css'
-import '../static/vendor/animate/animate.css'
-import '../static/vendor/css-hamburgers/hamburgers.min.css'
-import '../static/vendor/animsition/css/animsition.min.css'
-import '../static/vendor/select2/select2.min.css'
-import '../static/vendor/daterangepicker/daterangepicker.css'
+import '../../static/vendor/bootstrap/css/bootstrap.min.css'
+import '../../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
+import '../../static/fonts/iconic/css/material-design-iconic-font.min.css'
+import '../../static/vendor/animate/animate.css'
+import '../../static/vendor/css-hamburgers/hamburgers.min.css'
+import '../../static/vendor/animsition/css/animsition.min.css'
+import '../../static/vendor/select2/select2.min.css'
+import '../../static/vendor/daterangepicker/daterangepicker.css'
 
 function AdminDashboard(){
 
@@ -62,7 +61,7 @@ function AdminDashboard(){
           <button class="nav-buttons"><Link class="button-links" to="/admin-dashboard">Dashboard</Link></button>
         </div>
         <div class="manage-staffs">
-          <button class="nav-buttons"><Link class="button-links" to="">Manage Staffs</Link></button>
+          <button class="nav-buttons"><Link class="button-links" to="/manage-staffs">Manage Staffs</Link></button>
         </div>
         <div class="manage-users">
           <button class="nav-buttons"><Link class="button-links" to="">Manage Users</Link></button>
