@@ -13,11 +13,12 @@
     overflow: hidden;
   }
 
-  #left-navigation{
-    height: 722px;
+  .dashboard{
+    display: flex;
+  }
+
+  .left-navigation{
     width: 20%;
-    position: relative;
-    display: inline-block;
     border-right: 2px solid;
     background-color: rgba(79, 157, 218, 0.25);
   }
@@ -119,13 +120,18 @@
     color: #000000;
   }
 
-  .dashboard{
-    height: 100%;
-    width: 100%;
-    display: inline-block;
-    position: relative;
-    background-color: rgba(79, 157, 218, 0.25);
+  .right-dashboard{
+    flex-grow: 1;
   }
+
+  .left-navigation, .right-dashboard{
+    align-self: flex-start;
+  }
+
+  .left-navigation, .right-dashboard{
+    min-height: 100vh;
+  }
+
 
   .card{
     display: inline-block;

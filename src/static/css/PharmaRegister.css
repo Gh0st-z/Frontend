@@ -51,6 +51,23 @@
     position: relative;
   }
 
+  .pharma-phn-num-wrap-input100{
+    display: inline-block;
+    width: 30%;
+    margin-left: 17px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+
+  .pharma-addr-wrap-input100{
+    display: inline-block;
+    width: 40%;
+    margin-top: 10px;
+    margin-left: 22px;
+    position: relative;
+  }
+
   .pharma-name-input100 {
     display: inline-block;
     width: 30%;
@@ -73,6 +90,20 @@
     font-family: 'Ubuntu', sans-serif;
     margin-left: 17px;
     display: block;
+  }
+  
+  .pharma-phn-num-label-input100{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: left;
+    display: inline-block;
+    position: relative;
+  }
+
+  .pharma-addr-label-input100{
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 60px;
+    display: inline-block;
+    position: relative;
   }
   
   .pharma-input100{
@@ -118,6 +149,35 @@
     margin-left: 17px;
     padding: 0 6px 0 0px;
   }
+
+  .pharma-phn-num-input100{
+    width: 195px;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+    border-bottom: 2px solid #8d908e;
+    transition: border-color 0.3s;
+    outline: none;
+    line-height: 1.2;
+    display: block;
+    height: 37px;
+    background: transparent;
+    padding: 0 6px 0 0px;
+  }
+
+  .pharma-addr-input100{
+    width: 240px;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+    border-bottom: 2px solid #8d908e;
+    transition: border-color 0.3s;
+    margin-left: 60px;
+    outline: none;
+    line-height: 1.2;
+    display: block;
+    height: 37px;
+    background: transparent;
+    padding: 0 6px 0 0px;
+  }
   
   .pharma-input100:focus {
     border-color: #00599c;
@@ -139,8 +199,12 @@
     border-color: #00599c;
   }
 
-  .pharma-ln-input100:focus::placeholder {
-    color: transparent;
+  .pharma-phn-num-input100:focus {
+    border-color: #00599c;
+  }
+
+  .pharma-addr-input100:focus {
+    border-color: #00599c;
   }
 
   .pharma-focus-input100 {

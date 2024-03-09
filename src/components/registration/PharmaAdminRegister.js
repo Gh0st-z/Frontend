@@ -21,6 +21,7 @@ function RegisterPharmaAdmin(){
         last_name: '',
         email: '',
         phone_number: '',
+        address: '',
         password: '',
         role: 'admin'
     });
@@ -149,10 +150,13 @@ function RegisterPharmaAdmin(){
                     <input class="pharma-input100" type="email" name="email" placeholder="Enter your Email" onChange={handleInputChange}/>
                     <span class="pharma-focus-input100" data-symbol="&#x2709;"></span>
                 </div>
-                <div class="pharma-wrap-input100">
-                    <span class="pharma-label-input100">Phone Number: </span>
-                    <input class="pharma-input100" type="text" name="phone_number" placeholder="Enter your Phone Number" onChange={handleInputChange}/>
-                    <span class="pharma-focus-input100" data-symbol="&#9743;"></span>
+                <div class="pharma-phn-num-wrap-input100">
+                    <span class="pharma-phn-num-label-input100">Phone Number: </span>
+                    <input class="pharma-phn-num-input100" type="text" name="phone_number" onChange={handleInputChange}/>
+                </div>
+                <div class="pharma-addr-wrap-input100">
+                    <span class="pharma-addr-label-input100">Address: </span>
+                    <input class="pharma-addr-input100" type="text" name="address" onChange={handleInputChange}/>
                 </div>
                 <div class="pharma-wrap-input100">
                     <span class="pharma-label-input100">Password: </span>

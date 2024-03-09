@@ -21,6 +21,7 @@ function Registerform(){
         last_name: '',
         email: '',
         phone_number: '',
+        address: '',
         password: '',
         role: 'customer'
     });
@@ -149,10 +150,13 @@ function Registerform(){
                 <input class="input100" type="email" name="email" placeholder="Enter your Email" onChange={handleInputChange}/>
                 <span class="focus-input100" data-symbol="&#x2709;"></span>
             </div>
-            <div class="wrap-input100">
-                <span class="label-input100">Phone Number: </span>
-                <input class="input100" type="text" name="phone_number" placeholder="Enter your Phone Number" onChange={handleInputChange}/>
-                <span class="focus-input100" data-symbol="&#9743;"></span>
+            <div class="phn-num-wrap-input100">
+                <span class="phn-num-label-input100">Phone Number: </span>
+                <input class="phn-num-input100" type="text" name="phone_number" onChange={handleInputChange}/>
+            </div>
+            <div class="addr-wrap-input100">
+                <span class="addr-label-input100">Address: </span>
+                <input class="addr-input100" type="text" name="address" onChange={handleInputChange}/>
             </div>
             <div class="wrap-input100">
                 <span class="label-input100">Password: </span>

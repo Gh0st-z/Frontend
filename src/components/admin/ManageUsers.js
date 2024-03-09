@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import '../../static/css/AdminDashboard.css'
+import '../../static/css/ManageStaffs.css'
 import '../../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 import '../../static/fonts/iconic/css/material-design-iconic-font.min.css'
@@ -12,9 +12,50 @@ import '../../static/vendor/animsition/css/animsition.min.css'
 import '../../static/vendor/select2/select2.min.css'
 import '../../static/vendor/daterangepicker/daterangepicker.css'
 
-function AdminDashboard(){
+const AddStaffModal = ({ show, onClose }) => {
+  if (!show) {
+    return null;
+  }
 
-  const navigate = useNavigate();
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Process your form here. You might want to use axios to send data to your API.
+    onClose(); // Close the modal after form submission
+  };
+
+  return (
+    <div className="modal" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <span className="close-button" onClick={onClose}>&times;</span>
+        <h2>Add Staff</h2>
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="Name" name="name" />
+          <input type="email" placeholder="Email" name="email" />
+          <input type="text" placeholder="Address" name="address" />
+          <input type="tel" placeholder="Phone" name="phone" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  );
+}; 
+
+function ManageStaffs(){
+
+  const navigate = useNavigate(); 
+
+  const [showAddStaffModal, setShowAddStaffModal] = useState(false);
+
+  const openModal = () => {
+    document.body.classList.add('body-no-scroll');
+    setShowAddStaffModal(true);
+  };
+  
+  const closeModal = () => {
+    document.body.classList.remove('body-no-scroll');
+    setShowAddStaffModal(false);
+  };
 
   const showToast = (type, message) => {
     toast[type](message, {
@@ -50,8 +91,9 @@ function AdminDashboard(){
     navigate('/login');
   };
   
+  
   return(
-    <div class="dashboard">
+    <div class="main-dashboard">
       <ToastContainer/>
       <div class="left-navigation">
         <div class="pharmacy-name">
@@ -61,7 +103,7 @@ function AdminDashboard(){
           <button class="nav-buttons"><Link class="button-links" to="/admin-dashboard">Dashboard</Link></button>
         </div>
         <div class="manage-staffs">
-          <button class="nav-buttons"><Link class="button-links" to="/manage-staffs">Manage Staffs</Link></button>
+          <button class="nav-buttons"><Link class="button-links" to="">Manage Staffs</Link></button>
         </div>
         <div class="manage-users">
           <button class="nav-buttons"><Link class="button-links" to="">Manage Users</Link></button>
@@ -76,18 +118,28 @@ function AdminDashboard(){
           <button class="nav-buttons"><Link class="button-links" to="">Logout</Link></button>
         </div>
       </div>
-      <div class="right-dashboard">
-        <div id="card">
-          <div id="card-header">
-            Today's Sales
-          </div>
-          <div id="card-body">
-            $10,945
-          </div>
-        </div>
-      </div>
+      <div class="content">
+        <h1 class="content-header">Manage Staffs</h1>
+        <button class="add-staff-btn" onClick={openModal}>Add Staffs</button>
+        <AddStaffModal show={showAddStaffModal} onClose={closeModal} />
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     </div>
   );
 }
 
-export default AdminDashboard;
+export default ManageStaffs;
