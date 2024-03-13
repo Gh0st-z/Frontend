@@ -8,6 +8,8 @@ import Registerpharma from './components/registration/PharmaProfile';
 import RegisterPharmaAdmin from './components/registration/PharmaAdminRegister';
 import AdminDashboard from './components/admin/AdminDashboard';
 import ManageStaffs from './components/admin/ManageStaff';
+import ManageMedicines from './components/admin/ManageMedicines';
+import ManageProducts from './components/admin/ManageProducts';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/register-pharma" element={<Registerpharma/>}/>
         <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
         <Route path="/manage-staffs" element={<ManageStaffs/>}/>
+        <Route path="/manage-users" element={<ManageMedicines/>}/>
+        <Route path="/manage-products" element={<ManageProducts/>}/>
       </Routes>
     </Router>
   );

@@ -142,6 +142,7 @@
 
   .add-staff-btn{
     background-color: rgba(79, 157, 218, 0.25);
+    border: 1px solid;
     border-radius: 5px;
     margin-top: 10px;
     width: 150px;
@@ -150,8 +151,8 @@
   }
 
   .add-staff-btn:hover{
-    background-color: rgba(2, 72, 125, 0.25);
-    color: #bc0303;
+    background-color: rgba(0, 145, 255, 0.25);
+    color: #3f3f3f;
   }
 
   .modal {
@@ -291,3 +292,24 @@
     background-color: rgba(79, 157, 218, 0.25);
   }
   
+  table {
+    width: 1150px;
+    margin-left: 15px;
+    margin-top: 20px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+      border: 1px solid #ddd;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+
+  th {
+      background-color: #f2f2f2;
+  }

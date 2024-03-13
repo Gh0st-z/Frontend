@@ -26,7 +26,7 @@ function AdminDashboard(){
       draggable: true,
     });
   };
-  
+
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 
@@ -49,7 +49,7 @@ function AdminDashboard(){
     localStorage.setItem('isLoggedout', 'true');
     navigate('/login');
   };
-  
+
   return(
     <div class="dashboard">
       <ToastContainer/>
@@ -64,10 +64,10 @@ function AdminDashboard(){
           <button class="nav-buttons"><Link class="button-links" to="/manage-staffs">Manage Staffs</Link></button>
         </div>
         <div class="manage-users">
-          <button class="nav-buttons"><Link class="button-links" to="">Manage Users</Link></button>
+          <button class="nav-buttons"><Link class="button-links" to="/manage-users">Manage Medicine</Link></button>
         </div>
         <div class="manage-products">
-          <button class="nav-buttons"><Link class="button-links" to="">Manage Products</Link></button>
+          <button class="nav-buttons"><Link class="button-links" to="/manage-products">Manage Products</Link></button>
         </div>
         <div class="admin-profile">
           <button class="nav-buttons"><Link class="button-links" to="">Admin Profile</Link></button>

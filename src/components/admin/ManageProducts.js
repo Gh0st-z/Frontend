@@ -11,47 +11,14 @@ import '../../static/vendor/css-hamburgers/hamburgers.min.css'
 import '../../static/vendor/animsition/css/animsition.min.css'
 import '../../static/vendor/select2/select2.min.css'
 import '../../static/vendor/daterangepicker/daterangepicker.css'
-import { responsesAreSame } from 'workbox-broadcast-update';
 
-const AddStaffModal = ({ show, onClose, addNewStaff }) => {
+const AddProductModal = ({ show, onClose }) => {
   const [formData, setFormData] = useState({
-    first_name: '',
-    middle_name: '',
-    last_name: '',
-    email: '',
-    phone_number: '',
-    address: '',
-    password: '',
-    role: 'staff'
   });
 
   const [message, setMessage] = useState('');
 
-  const [passData, setPassData] = useState({
-      password2: '',
-  });
-
   const [formKey, setFormKey] = useState(0);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'phone_number' && !isNaN(value)) {
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    } else if (name !== 'phone_number') {
-        setFormData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
-    }
-    setFormData((prevState) => ({
-        ...prevState,
-        [name]: value,
-    }));
-
-  };
 
   const showToast = (type, message) => {
     toast[type](message, {
@@ -74,14 +41,6 @@ const AddStaffModal = ({ show, onClose, addNewStaff }) => {
 
   const API_BASE_URL = getServerIPAddress();
 
-  const handlePassValidation = (e) => {
-    const {name, value} = e.target;
-    setPassData((prevState) => ({
-        ...prevState,
-        [name]: value,
-    }));
-  }
-
   if (!show) {
     return null;
   }
@@ -98,80 +57,30 @@ const AddStaffModal = ({ show, onClose, addNewStaff }) => {
       showToast('error', 'Please fill in all fields.');
     }
     else{
-      if (formData.password != passData.password2) {
-        showToast('error', 'The passwords do not match!');
-      }
-      else if (!/^\d+$/.test(formData.phone_number)) {
-        showToast('error', 'Phone number should contain only numeric values.');
-      }
-      else{
-        const emailCheckResponse = await axios.get(API_BASE_URL + '/autho/register-get/', {
-          params: {
-            email: formData.email,
-          },
-        });
-        if(emailCheckResponse.data.exists){
-          showToast('error', 'Email already registered!');
-          setFormKey((prevKey) => prevKey + 1);
-        }
-        else{
-          axios.post( API_BASE_URL + '/autho/register/', formData)
-          .then(response => {
-            addNewStaff(response.data);
-            setMessage(response.data.message);
-            showToast('success', 'Account successfully created!');
-            setFormKey((prevKey) => prevKey + 1);
-          }).catch(error =>{
-            console.log(error);
-            setMessage('Error occurred during registration.');
-            showToast('error', 'Error occurred during registration.');
-          });
-        }
-      }
+      axios.post( API_BASE_URL + '/autho/register/', formData)
+      .then(response => {
+        console.log(response.data.message);
+        setMessage(response.data.message);
+        showToast('success', 'Account successfully created!');
+        setFormKey((prevKey) => prevKey + 1);
+      }).catch(error =>{
+        console.log(error);
+        setMessage('Error occurred during registration.');
+        showToast('error', 'Error occurred during registration.');
+      });
     }
     onClose();
-  };
+    };
+
 
   return (
     <div className="modal" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <span className="close-button" onClick={onClose}>&times;</span>
-        <h2 class="form-head">Add Staff</h2>
+        <h2 class="form-head">Add Products</h2>
         <form action="" method="POST" enctype="multipart/form-data" onSubmit={handleSubmit}>
-          <div class="modal-name-input100">
-            <span class="modal-name-label-input100">First Name: </span>
-            <input class="modal-n-input100" type="text" name="first_name" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-name-input100">
-            <span class="modal-name-label-input100">Middle Name: </span>
-            <input class="modal-n-input100" type="text" name="middle_name" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-name-input100">
-            <span class="modal-lname-label-input100">Last Name: </span>
-            <input class="modal-ln-input100" type="text" name="last_name" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-wrap-input100">
-            <span class="modal-label-input100">Email: </span>
-            <input class="modal-input100" type="email" name="email" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-wrap-input100">
-            <span class="modal-label-input100">Phone Number: </span>
-            <input class="modal-input100" type="text" name="phone_number" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-wrap-input100">
-            <span class="modal-label-input100">Address: </span>
-            <input class="modal-input100" type="text" name="address" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-wrap-input100">
-            <span class="modal-label-input100">Password: </span>
-            <input class="modal-input100" type="password" name="password" onChange={handleInputChange}/>
-          </div>
-          <div class="modal-wrap-input100">
-            <span class="modal-label-input100">Confirm Password: </span>
-            <input class="modal-input100" type="password" name="password2" onChange={handlePassValidation}/>
-          </div>
           <div class="wrap-input100">
-            <button class="create-staff">Add Staff</button>
+            <button class="create-product">Add Product</button>
           </div>
         </form>
       </div>
@@ -179,17 +88,13 @@ const AddStaffModal = ({ show, onClose, addNewStaff }) => {
   );
 };
 
-function ManageStaffs(){
+function ManageProducts(){
 
   const navigate = useNavigate();
 
-  const [showAddStaffModal, setShowAddStaffModal] = useState(false);
+  const [showAddProductModal, setShowAddProductModal] = useState(false);
 
   const [staffs, setStaffs] = useState([]);
-
-  const addNewStaff = (newStaff) => {
-    setStaffs((prevStaffs) => [...prevStaffs, newStaff]);
-  };
 
   const getServerIPAddress = () => {
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
@@ -203,12 +108,12 @@ function ManageStaffs(){
 
   const openModal = () => {
     document.body.classList.add('body-no-scroll');
-    setShowAddStaffModal(true);
+    setShowAddProductModal(true);
   };
 
   const closeModal = () => {
     document.body.classList.remove('body-no-scroll');
-    setShowAddStaffModal(false);
+    setShowAddProductModal(false);
   };
 
   const showToast = (type, message) => {
@@ -285,31 +190,21 @@ function ManageStaffs(){
         </div>
       </div>
       <div class="content">
-        <h1 class="content-header">Manage Staffs</h1>
-        <button class="add-staff-btn" onClick={openModal}>Add Staffs</button>
-        <AddStaffModal show={showAddStaffModal} onClose={closeModal} addNewStaff={addNewStaff}/>
+        <h1 class="content-header">Manage Products</h1>
+        <button class="add-staff-btn" onClick={openModal}>Add Products</button>
+        <AddProductModal show={showAddProductModal} onClose={closeModal} />
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Contact</th>
-                    <th>Action</th>
+                    <th>Produt Name</th>
+                    <th>Price</th>
+                    <th>Product info</th>
+                    <th>Stock Available</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-              {staffs.map((staff, index) => (
-                <tr key={staff.id || index}>
-                  <td>{index + 1}</td>
-                  <td>{staff.first_name} {staff.middle_name} {staff.last_name}</td>
-                  <td>{staff.email}</td>
-                  <td>{staff.address}</td>
-                  <td>{staff.phone_number}</td>
-                  <td><button></button><button></button></td>
-                </tr>
-              ))}
             </tbody>
         </table>
     </div>
@@ -317,4 +212,4 @@ function ManageStaffs(){
   );
 }
 
-export default ManageStaffs;
+export default ManageProducts;
